@@ -35,8 +35,15 @@ jobs:
       - name: Install dependencies
         run: npm ci --ignore-scripts --force
 
-      - name: Run Figmagic
+      - name: Run Figmagic and use latest Figma data
+        id: figma-latest
+        if: ${{ !github.event.inputs.version }}
         run: npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
+
+      - name: Run Figmagic and use named version of Figma data
+        id: figma-versioned
+        if: ${{ github.event.inputs.version }}
+        run: npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }} --versionName ${{ github.event.inputs.version }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
