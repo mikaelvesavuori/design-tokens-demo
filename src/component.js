@@ -7,7 +7,7 @@ class MyComponent extends HTMLElement {
         :host {
           display: block;
           color: white;
-          background: var(--blue1);
+          background: var(--red1);
           font-size: var(--h3);
           font-family: var(--regularFont);
           font-weight: var(--bold);
