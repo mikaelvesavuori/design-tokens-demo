@@ -8,5 +8,6 @@
   "syncTokens": true,
   "syncGraphics": false,
   "syncElements": false,
-  "outputFormatTokens": "css"
+  "outputFormatTokens": "css",
+  "outputFolderTokens": "src/tokens"
 }
