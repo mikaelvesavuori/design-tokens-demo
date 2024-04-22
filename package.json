@@ -1,0 +1,15 @@
+{
+  "name": "design-tokens-demo",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Mikael Vesavuori",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "init": "npx figmagic init",
+    "start": "npx figmagic"
+  },
+  "devDependencies": {
+    "figmagic": "^4.5.13"
+  }
+}
