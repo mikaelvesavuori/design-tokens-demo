@@ -37,7 +37,6 @@ jobs:
 
       - name: Run Figmagic and use latest Figma data
         id: figma-latest
-        if: ${{ !github.event.inputs.version }}
         run: rm -rf src/tokens && npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
 
       - name: Deploy to Cloudflare
