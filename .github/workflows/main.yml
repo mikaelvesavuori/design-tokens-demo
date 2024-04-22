@@ -38,16 +38,16 @@ jobs:
       - name: Run Figmagic and use latest Figma data
         id: figma-latest
         if: ${{ !github.event.inputs.version }}
-        run: npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
+        run: rm -rf src/tokens && npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
 
       - name: Run Figmagic and use named version of Figma data
         id: figma-versioned
         if: ${{ github.event.inputs.version }}
-        run: npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }} --versionName ${{ github.event.inputs.version }}
+        run: rm -rf src/tokens && npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }} --versionName ${{ github.event.inputs.version }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy "src" --project-name="design-tokens-demo" --commit-dirty=true
+          command: pages deploy "src" --project-name="design-tokens-demo"
