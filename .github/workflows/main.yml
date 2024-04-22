@@ -36,7 +36,7 @@ jobs:
         run: npm ci --ignore-scripts --force
 
       - name: Run Figmagic and use latest Figma data
-        run: rm -rf src/tokens && npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
+        run: npx figmagic --token ${{ secrets.FIGMA_TOKEN }} --url ${{ secrets.FIGMA_URL }}
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v3
